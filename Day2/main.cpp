@@ -30,19 +30,19 @@ int main()
     q.dequeue(data) == 1 ? cout << "sucssess\n" : cout << "failed\n";
     q.displayQueue();
 
-    // Stack stack;
+    Stack stack;
 
-    // stack.push(10);
-    // stack.push(20);
-    // stack.push(30);
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
 
-    // int topValue = 0;
-    // (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
-    // stack.pop();
-    // (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
-    // stack.pop();
-    // (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
-    // stack.pop();
-    // (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
+    int topValue = 0;
+    (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
+    stack.pop();
+    (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
+    stack.pop();
+    (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
+    stack.pop();
+    (stack.peek(topValue)) ? cout << "Top :" <<  topValue << endl : cout << "Failed\n";
     return 0;
 }
