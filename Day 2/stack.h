@@ -25,7 +25,8 @@ class Stack
             {
                 data = top->data;
                 return true;
-            } else 
+            } 
+            else 
             {
                 return false;
             }

@@ -32,8 +32,8 @@ class Queue
             else
             {
                 front = (front == -1) ? 0 : front;
-                arr[rear] = data;
                 rear = (rear + 1) % size;
+                arr[rear] = data;
                 return true;
             }
         }
@@ -64,10 +64,10 @@ class Queue
             int current = front;
             while (current != rear)
             {
-                cout << "arr[" << current << "] = " << arr[current] << " ";
+                cout << "arr[" << current << "] = " << arr[current] << "\t";
                 current = (current + 1) % size;
             }
-            cout << endl;
+            cout << "arr[" << rear << "] = "<< arr[current] << endl;
         }
 
         Queue(int size)
