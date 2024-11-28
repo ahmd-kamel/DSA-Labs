@@ -54,15 +54,112 @@ public:
         node2->Data = temp;
     }
 
+    void disconnectNode(Node* node) 
+    {
+        if (node == NULL) 
+            return; 
 
-    void bubbleSort() {
+        if (node == head) 
+        {
+            head = node->Next;
+            if(head) head->Prev = NULL;
+        }
+        else if(node == tail)
+        {
+            tail = node->Prev;
+            if(tail) head->Next = NULL;
+        }
+        else
+        {
+            node->Prev->Next = node->Next;
+            node->Next->Prev = node->Prev;
+        }
+
+        node->Prev = NULL;
+        node->Next = NULL;
+
+    }
+
+    void insertAfter(Node* nodeToInsert, Node* nodeToInsertAfter)
+    {
+        if (nodeToInsertAfter == NULL) 
+        {
+            cout << "The node to insert after cannot be nullptr!" << endl;
+            return;
+        }
+
+        if (nodeToInsertAfter == head) 
+        {
+            nodeToInsert->Next = head->Next;
+            nodeToInsert->Prev = head;
+            if (head->Next != NULL) 
+            {
+                head->Next->Prev = nodeToInsert;
+            }
+            head->Next = nodeToInsert;
+            return;
+        }
+
+        if (nodeToInsertAfter == tail) 
+        {
+            nodeToInsert->Prev = tail;
+            tail->Next = nodeToInsert;
+            tail = nodeToInsert;
+            return;
+        }
+
+        nodeToInsert->Prev = nodeToInsertAfter;
+        nodeToInsert->Next = nodeToInsertAfter->Next;
+        if (nodeToInsertAfter->Next != NULL) 
+        {
+            nodeToInsertAfter->Next->Prev = nodeToInsert;
+        }
+        nodeToInsertAfter->Next = nodeToInsert;
+    }
+
+    void bubbleSortSN()
+    {
+        if (head == NULL || head->Next == NULL) 
+            return;
+
+        bool swapped;
+        int iterations = 0;
+        Node* temp, *tempNext;
+
+        do 
+        {
+            swapped = false;
+            temp = head;
+
+            while (temp != NULL && temp->Next != NULL) 
+            {
+                if (temp->Data > temp->Next->Data) 
+                {
+                    tempNext = temp->Next;
+                    disconnectNode(temp);
+                    insertAfter(temp, tempNext);
+                    swapped = true;
+                }
+                else
+                {
+                    temp = temp->Next;
+                }
+                iterations++;
+            }
+        } while (swapped);
+        cout << "Iterations : " << iterations << endl;
+    }
+
+    void bubbleSortSD() 
+    {
         if (head == NULL || head->Next == NULL) 
             return;
 
         bool swapped;
         Node* temp;
 
-        do {
+        do 
+        {
             swapped = false;
             temp = head;
 
